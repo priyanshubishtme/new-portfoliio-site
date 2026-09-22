@@ -96,8 +96,9 @@
   height: 34vh;
   background: linear-gradient(
     180deg,
-    var(--night) 0%,
-    #1a1210 40%,
+    #e8a63e 0%,
+    #9a5d22 26%,
+    #4a2c17 62%,
     var(--ember) 100%
   );
 }

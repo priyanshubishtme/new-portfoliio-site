@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { initLenis, destroyLenis } from './lib/lenis';
 import Home from './pages/Home';
 import Note from './pages/Note';
 
@@ -8,6 +10,12 @@ import Note from './pages/Note';
  *   /notes/:slug → Individual blog post
  */
 export default function App() {
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    const lenis = initLenis();
+    return () => destroyLenis();
+  }, []);
+
   return (
     <>
       {/* Film grain overlay */}
