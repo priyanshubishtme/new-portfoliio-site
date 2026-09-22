@@ -12,6 +12,7 @@ import winsData from '../content/wins.json';
 import journeyData from '../content/journey.json';
 import { parseFrontmatter } from '../lib/frontmatter';
 import { useScrollReveal } from '../lib/useScrollReveal';
+import TechStackStrip from '../components/TechStackStrip';
 import './Home.css';
 
 // Import blog posts
@@ -61,6 +62,7 @@ export default function Home() {
               ))}
             </div>
             <p className="what-skills">{journeyData.skills}</p>
+            <TechStackStrip />
           </div>
         </section>
 

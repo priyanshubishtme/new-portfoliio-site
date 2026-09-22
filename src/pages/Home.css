@@ -435,7 +435,8 @@
 .note-row:hover .note-row__title,
 .note-row:focus-visible .note-row__title {
   color: var(--gold);
-  transform: translateX(10px);
+  transform: translateX(10px) scale(1.02);
+  text-shadow: 0 0 12px rgba(242, 180, 65, 0.3);
 }
 
 .note-row__meta {

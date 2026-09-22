@@ -46,7 +46,6 @@ export default function ScrollScene() {
   const starsRef = useRef(null);
   const orbRef = useRef(null);
   const sunRef = useRef(null);
-  const sweepRef = useRef(null);
   const avatarRef = useRef(null);
   const campusRef = useRef(null);
   const panRef = useRef(null);
@@ -173,10 +172,6 @@ export default function ScrollScene() {
         avatarRef.current.style.transform = `translate3d(0,${-seg(p, 0, 0.4) * 5}vh,0) scale(${1 + 0.05 * seg(p, 0, 0.4)})`;
       }
 
-      // Light sweep
-      if (sweepRef.current) {
-        sweepRef.current.style.opacity = 0.55 * (1 - ease(seg(p, 0.06, 0.22)));
-      }
 
       // Gold orb
       if (orbRef.current) {
@@ -306,8 +301,7 @@ export default function ScrollScene() {
         {/* Sun */}
         <div className="scene-sun" ref={sunRef} />
 
-        {/* Light sweep */}
-        <div className="scene-sweep" ref={sweepRef} aria-hidden="true" />
+
 
         {/* Avatar */}
         <div className="scene-avatar" ref={avatarRef}>

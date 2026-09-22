@@ -14,8 +14,8 @@
   --line: rgba(243, 234, 217, 0.14);
 
   /* ----- Typography ----- */
-  --display: 'Bricolage Grotesque', system-ui, sans-serif;
-  --prose: 'Newsreader', Georgia, serif;
+  --display: 'Outfit', system-ui, sans-serif;
+  --prose: 'Inter', system-ui, sans-serif;
 
   /* ----- Fluid Type Scale ----- */
   --fs-hero:   clamp(2.7rem, 7.4vw, 6.6rem);

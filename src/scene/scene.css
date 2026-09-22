@@ -36,16 +36,16 @@
 
 .sky--dusk {
   background:
-    radial-gradient(60vw 50vh at 72% 46%, rgba(90, 60, 90, 0.35), transparent 64%),
-    linear-gradient(180deg, #0a0c16 0%, #14121a 55%, #1d1512 100%);
+    radial-gradient(60vw 50vh at 72% 46%, rgba(90, 60, 90, 0.25), transparent 64%),
+    linear-gradient(180deg, #070b16 0%, #0a0c16 40%, #14121a 75%, #1d1512 100%);
 }
 
 .sky--ember {
-  background: linear-gradient(180deg, #14100f 0%, #2B1B12 55%, #4a2c17 100%);
+  background: linear-gradient(180deg, #0a0c16 0%, #1d1512 40%, #2B1B12 75%, #4a2c17 100%);
 }
 
 .sky--dawn {
-  background: linear-gradient(180deg, #2B1B12 0%, #5c3719 42%, #b56f24 78%, #e8a63e 100%);
+  background: linear-gradient(180deg, #1d1512 0%, #3a2214 30%, #754618 70%, #d89633 100%);
 }
 
 /* ----- Stars canvas ----- */
@@ -109,35 +109,7 @@
   );
 }
 
-/* ----- Rotating light sweep behind avatar ----- */
-.scene-sweep {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.55;
-  mix-blend-mode: screen;
-  pointer-events: none;
-  background: conic-gradient(
-    from var(--ang, 0deg) at 76% 40%,
-    transparent 0deg,
-    rgba(255, 240, 205, 0.16) 6deg,
-    rgba(255, 240, 205, 0.55) 10deg,
-    rgba(255, 240, 205, 0.16) 14deg,
-    transparent 26deg,
-    transparent 360deg
-  );
-  animation: sweepSpin 9s linear infinite;
-}
 
-@keyframes sweepSpin {
-  to { --ang: 360deg; }
-}
-
-@property --ang {
-  syntax: '<angle>';
-  inherits: true;
-  initial-value: 0deg;
-}
 
 /* ----- Avatar ----- */
 .scene-avatar {
@@ -373,9 +345,4 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .scene-sweep {
-    animation: none;
-    opacity: 0.2 !important;
-  }
-}
+

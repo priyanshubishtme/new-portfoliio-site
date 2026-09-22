@@ -58,9 +58,17 @@
   transform-origin: 0px -70px;
 }
 
+/* Added a continuous 3D flip for the medal after it drops */
+@keyframes medalSpin {
+  0% { transform: translateY(0) scale(1) rotateY(0deg); }
+  100% { transform: translateY(0) scale(1) rotateY(360deg); }
+}
+
 .ceremony--play .ceremony__medal {
   opacity: 1;
   transform: translateY(0) scale(1);
+  animation: medalSpin 4s linear infinite;
+  animation-delay: 1.65s;
 }
 
 /* ----- Win video screen ----- */
