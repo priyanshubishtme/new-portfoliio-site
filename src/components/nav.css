@@ -1,0 +1,169 @@
+/* =========================================
+   Nav — floating pill navigation
+   ========================================= */
+
+.nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 8px 7px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: rgba(15, 27, 61, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.nav__brand {
+  font-weight: 800;
+  margin-right: 12px;
+  letter-spacing: -0.01em;
+}
+
+/* Nav links */
+.nav__link {
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  transition: color 0.3s, background 0.3s;
+}
+
+.nav__link:hover {
+  color: var(--cream);
+}
+
+.nav__link.active {
+  color: var(--cream);
+  background: rgba(243, 234, 217, 0.1);
+}
+
+/* CTA button */
+.nav__cta {
+  background: var(--cream);
+  color: var(--night);
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  margin-left: 6px;
+  transition: transform 0.4s var(--ease-soft);
+}
+
+.nav__cta:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile hamburger */
+.nav__hamburger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  place-items: center;
+  margin-left: 6px;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: var(--cream);
+  position: relative;
+  transition: background 0.3s;
+}
+
+.nav__hamburger span::before,
+.nav__hamburger span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  transition: transform 0.3s var(--ease-soft);
+}
+
+.nav__hamburger span::before {
+  top: -5px;
+}
+
+.nav__hamburger span::after {
+  top: 5px;
+}
+
+/* Hamburger open state */
+.nav__hamburger.open span {
+  background: transparent;
+}
+
+.nav__hamburger.open span::before {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.nav__hamburger.open span::after {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Mobile full-screen menu */
+.nav__mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 59;
+  background: rgba(5, 7, 13, 0.96);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s var(--ease-soft), visibility 0.4s;
+}
+
+.nav__mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__mobile-menu a {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--cream);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  transition: color 0.3s, background 0.3s;
+}
+
+.nav__mobile-menu a:hover,
+.nav__mobile-menu a.active {
+  color: var(--gold);
+  background: rgba(243, 234, 217, 0.06);
+}
+
+.nav__mobile-menu .nav__cta {
+  font-size: 1.1rem;
+  margin-top: 16px;
+}
+
+/* Responsive: hide links, show hamburger on mobile */
+@media (max-width: 820px) {
+  .nav__link {
+    display: none;
+  }
+
+  .nav {
+    padding-left: 16px;
+  }
+
+  .nav__hamburger {
+    display: grid;
+  }
+}
