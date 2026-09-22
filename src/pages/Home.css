@@ -570,11 +570,11 @@
   padding: 15px 30px;
   border-radius: var(--radius-pill);
   font-weight: 600;
-  transition: transform 0.4s var(--ease-soft), background 0.3s;
+  transition: transform 0.4s var(--ease-soft), background 0.3s, box-shadow 0.4s var(--ease-soft);
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .btn--primary {
@@ -584,6 +584,7 @@
 
 .btn--primary:hover {
   background: #ffcc66;
+  box-shadow: 0 8px 24px rgba(242, 180, 65, 0.4);
 }
 
 .btn--secondary {
@@ -592,7 +593,9 @@
 }
 
 .btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+  border-color: rgba(243, 234, 217, 0.6);
 }
 
 .contact-social {
