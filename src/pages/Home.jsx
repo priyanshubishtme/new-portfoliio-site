@@ -13,6 +13,7 @@ import journeyData from '../content/journey.json';
 import { parseFrontmatter } from '../lib/frontmatter';
 import { useScrollReveal } from '../lib/useScrollReveal';
 import TechStackStrip from '../components/TechStackStrip';
+import RocketIcon from '../components/RocketIcon';
 import './Home.css';
 
 // Import blog posts
@@ -70,6 +71,7 @@ export default function Home() {
           <div className="wrap">
             <h2 className="section-title reveal">Where I've been</h2>
             <div className="journey-cols">
+              <RocketIcon />
               {/* Experience */}
               <div className="timeline">
                 <h3 className="timeline__heading">Experience</h3>

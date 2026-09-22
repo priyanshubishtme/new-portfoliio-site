@@ -180,22 +180,7 @@
   box-shadow: 0 0 12px rgba(242, 180, 65, 0.8);
 }
 
-/* The Rocket */
-.journey-cols::after {
-  content: '🚀';
-  position: absolute;
-  left: 8px;
-  top: -12px;
-  font-size: 1.6rem;
-  z-index: 2;
-  filter: drop-shadow(0 0 10px rgba(242, 180, 65, 0.9));
-  animation: rocketHover 2s ease-in-out infinite alternate;
-}
 
-@keyframes rocketHover {
-  from { transform: translateY(0); }
-  to { transform: translateY(-6px); }
-}
 
 .timeline {
   position: relative;
