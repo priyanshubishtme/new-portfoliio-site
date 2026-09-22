@@ -173,7 +173,7 @@ export default function Reader() {
                         Page {idx + 1} of {project.story.length}
                       </div>
                       <p>
-                        <TypewriterText text={para} autoStart={true} />
+                        <TypewriterText text={para} />
                       </p>
                     </div>
                   </Page>

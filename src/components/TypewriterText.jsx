@@ -20,21 +20,17 @@ export default function TypewriterText({ text, autoStart = false }) {
     const el = containerRef.current;
     if (!el) return;
 
-    // We watch the parent's opacity or style. If it becomes visible, we type.
-    const observer = new MutationObserver(() => {
-      const parentEl = el.closest('.chapter, .pg');
-      if (parentEl) {
-        // Just checking if we are in DOM and ready
-        if (!isTyping && displayed.length === 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isTyping && displayed.length === 0) {
           setIsTyping(true);
+          observer.disconnect();
         }
-      }
-    });
+      },
+      { threshold: 0.5 }
+    );
 
-    const parent = el.closest('.chapter, .pg');
-    if (parent) {
-      observer.observe(parent, { attributes: true, attributeFilter: ['style', 'class'] });
-    }
+    observer.observe(el);
 
     return () => observer.disconnect();
   }, [displayed.length, isTyping, text, autoStart]);
