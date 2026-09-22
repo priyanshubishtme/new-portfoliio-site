@@ -21,20 +21,15 @@ export default function IsometricRoom() {
         fetchPriority="high"
       />
 
-      {/* Intro text */}
+      {/* Intro text & Profile Pic */}
       <div className="iso-room__intro">
+        <div className="iso-room__profile">
+          <img src={avatarImg} alt="Priyanshu Bisht" />
+        </div>
         <h1 className="iso-room__intro-text">
           <TypewriterText text="I am Priyanshu" autoStart={true} />
         </h1>
       </div>
-
-      {/* Avatar portraying Priyanshu visually */}
-      <img 
-        src={avatarImg} 
-        className="iso-room__avatar" 
-        alt="Priyanshu" 
-        aria-hidden="true" 
-      />
 
       {/* Ambient glow */}
       <div className="iso-room__glow" aria-hidden="true" />
