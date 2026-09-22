@@ -41,21 +41,28 @@ const Page = React.forwardRef((props, ref) => {
 
 export default function Reader() {
   const [openBook, setOpenBook] = useState(null); // index or null
+  const [currentPage, setCurrentPage] = useState(0);
   const bookRef = useRef(null);
   const closeRef = useRef(null);
 
   const isOpen = openBook !== null;
   const project = isOpen ? projectsData[openBook] : null;
 
+  const handleFlip = useCallback((e) => {
+    setCurrentPage(e.data);
+  }, []);
+
   // Open a book
   const handleOpen = useCallback((index) => {
     setOpenBook(index);
+    setCurrentPage(0);
     document.body.style.overflow = 'hidden';
   }, []);
 
   // Close the book
   const handleClose = useCallback(() => {
     setOpenBook(null);
+    setCurrentPage(0);
     document.body.style.overflow = '';
   }, []);
 
@@ -133,6 +140,7 @@ export default function Reader() {
                 className="real-book"
                 ref={bookRef}
                 usePortrait={true}
+                onFlip={handleFlip}
               >
                 {/* Cover Page */}
                 <Page>
@@ -166,18 +174,22 @@ export default function Reader() {
                 </Page>
 
                 {/* Story Pages */}
-                {project.story.map((para, idx) => (
-                  <Page key={idx}>
-                    <div className="pg">
-                      <div className="pg__label">
-                        Page {idx + 1} of {project.story.length}
+                {project.story.map((para, idx) => {
+                  const pageIndex = idx + 2; // Cover is 0, Facts is 1
+                  const isActive = Math.abs(currentPage - pageIndex) <= 1;
+                  return (
+                    <Page key={idx}>
+                      <div className="pg">
+                        <div className="pg__label">
+                          Page {idx + 1} of {project.story.length}
+                        </div>
+                        <p>
+                          <TypewriterText text={para} isActive={isActive} />
+                        </p>
                       </div>
-                      <p>
-                        <TypewriterText text={para} />
-                      </p>
-                    </div>
-                  </Page>
-                ))}
+                    </Page>
+                  );
+                })}
 
                 {/* Back Cover / End */}
                 <Page>
