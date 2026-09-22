@@ -4,7 +4,7 @@
  * playing on the computer monitor. Scrolls into the night sky.
  */
 import roomImg from '../assets/isometric-room.jpg';
-import winVideo from '../assets/everything_is_okay_make_it_ani.mp4';
+import TypewriterText from './TypewriterText';
 import './isometric-room.css';
 
 export default function IsometricRoom() {
@@ -20,16 +20,12 @@ export default function IsometricRoom() {
         fetchPriority="high"
       />
 
-      {/* Video on the monitor */}
-      <div className="iso-room__video-wrap">
-        <video
-          className="iso-room__video"
-          src={winVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
+      {/* Intro text */}
+      <div className="iso-room__intro">
+        <h1 className="iso-room__intro-text">
+          <TypewriterText text="I am Priyanshu" />
+        </h1>
+        <p className="iso-room__intro-sub reveal">Builder, Creator, Student</p>
       </div>
 
       {/* Ambient glow */}

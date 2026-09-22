@@ -14,7 +14,6 @@
  * 7. Text scrim + chapter text
  */
 import { useRef, useEffect, useCallback, useState } from 'react';
-import SkyLayers from './SkyLayers';
 import ChapterText from './ChapterText';
 import siteData from '../content/site.json';
 import storyData from '../content/story.json';
@@ -40,12 +39,8 @@ export default function ScrollScene() {
   // Refs for all animated elements
   const sceneRef = useRef(null);
   const stageRef = useRef(null);
-  const duskRef = useRef(null);
-  const emberRef = useRef(null);
-  const dawnRef = useRef(null);
   const starsRef = useRef(null);
   const orbRef = useRef(null);
-  const sunRef = useRef(null);
   const avatarRef = useRef(null);
   const campusRef = useRef(null);
   const panRef = useRef(null);
@@ -137,15 +132,8 @@ export default function ScrollScene() {
   // Update all layers based on progress (0 to 1)
   const updateScene = useCallback(
     (p) => {
-      // Sky layers
-      if (duskRef.current) duskRef.current.style.opacity = ease(seg(p, 0.10, 0.30));
-      if (emberRef.current) emberRef.current.style.opacity = ease(seg(p, 0.30, 0.56));
-      if (dawnRef.current) dawnRef.current.style.opacity = ease(seg(p, 0.80, 1));
+      // We keep the scene in night mode permanently. No dusk/ember/dawn fading.
 
-      // Stars fade
-      if (starsRef.current) {
-        starsRef.current.style.opacity = 1 - 0.9 * ease(seg(p, 0.35, 0.88));
-      }
 
       // Hero text
       const isMobile = window.innerWidth <= 820;
@@ -200,12 +188,6 @@ export default function ScrollScene() {
         scrimRef.current.style.opacity = cIn * (1 - 0.55 * cOut);
       }
 
-      // Sun
-      if (sunRef.current) {
-        const sp = ease(seg(p, 0.84, 1));
-        sunRef.current.style.opacity = sp;
-        sunRef.current.style.transform = `translate3d(0,${(1 - sp) * 30}vh,0)`;
-      }
 
       // Chapters
       let activeChapter = -1;
@@ -289,19 +271,11 @@ export default function ScrollScene() {
   return (
     <section id="scene" className="scroll-scene" ref={sceneRef} aria-label="My story">
       <div className="stage" ref={stageRef}>
-        {/* Sky layers */}
-        <SkyLayers refs={{ dusk: duskRef, ember: emberRef, dawn: dawnRef }} />
-
         {/* Stars */}
         <canvas className="stars-canvas" ref={starsRef} />
 
         {/* Gold orb */}
         <div className="scene-orb" ref={orbRef} />
-
-        {/* Sun */}
-        <div className="scene-sun" ref={sunRef} />
-
-
 
         {/* Avatar */}
         <div className="scene-avatar" ref={avatarRef}>

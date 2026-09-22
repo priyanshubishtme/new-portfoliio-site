@@ -112,67 +112,6 @@ export default function Ceremony() {
       ref={ceremonyRef}
       aria-hidden="true"
     >
-      {/* Confetti layer */}
-      <svg
-        ref={confettiRef}
-        viewBox="0 0 400 260"
-        className="ceremony__confetti"
-      />
-
-      {/* Podium SVG */}
-      <svg viewBox="0 0 400 260" className="ceremony__svg">
-        {/* Shadow */}
-        <ellipse cx="200" cy="238" rx="120" ry="14" fill="#000" opacity=".28" />
-        {/* Podium */}
-        <rect x="150" y="196" width="100" height="42" rx="4" fill="#3a2413" />
-        <rect x="150" y="196" width="100" height="6" fill="#F2B441" opacity=".7" />
-
-        {/* Figure */}
-        <g transform="translate(200 150)">
-          <ellipse cx="0" cy="86" rx="30" ry="7" fill="#000" opacity=".22" />
-          {/* Body */}
-          <path d="M-24 88c-2-34 3-58 24-58s26 24 24 58z" fill="#181210" />
-          <path
-            d="M-24 30c0-24 11-38 24-38s24 14 24 38c0 4-2 8-6 10l-6 46h-24l-6-46c-4-2-6-6-6-10z"
-            fill="#1c1512"
-          />
-          {/* Head */}
-          <g className="ceremony__head">
-            <circle cx="0" cy="-34" r="19" fill="#e2a06a" />
-            <path
-              d="M-19-34a19 19 0 0 1 38 0c0-14-38-16-38 0z"
-              fill="#241a12"
-            />
-          </g>
-          {/* Medal */}
-          <g className="ceremony__medal" opacity="0">
-            <path
-              d="M-4-58 -14-14M4-58 14-14"
-              stroke="#F2B441"
-              strokeWidth="5"
-              strokeLinecap="round"
-            />
-            <circle
-              cx="0"
-              cy="-6"
-              r="17"
-              fill="#F2B441"
-              stroke="#c9891e"
-              strokeWidth="2"
-            />
-            <circle
-              cx="0"
-              cy="-6"
-              r="9"
-              fill="none"
-              stroke="#fff6dc"
-              strokeWidth="2"
-              opacity=".8"
-            />
-          </g>
-        </g>
-      </svg>
-
       {/* Caption */}
       <p className="ceremony__caption">{caption}</p>
 

@@ -52,10 +52,17 @@ export default function TypewriterText({ text }) {
   return (
     <span ref={containerRef}>
       {displayed}
+      <span style={{ 
+        opacity: isTyping || displayed.length > 0 ? 1 : 0, 
+        animation: 'blink 1s step-end infinite' 
+      }}>|</span>
       {/* Invisible text to reserve space */}
       <span style={{ opacity: 0, position: 'absolute', pointerEvents: 'none' }}>
         {text.substring(displayed.length)}
       </span>
+      <style>{`
+        @keyframes blink { 50% { opacity: 0; } }
+      `}</style>
     </span>
   );
 }
