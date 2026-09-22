@@ -131,15 +131,19 @@ export default function Home() {
               <ul className="medal-shelf">
                 {winsData.tiers.map((tier) =>
                   tier.items.map((item, i) => (
-                    <li
-                      key={`${tier.tier}-${i}`}
-                      className={`medal medal--t${tier.tier}`}
-                    >
-                      <span className="medal__icon">{item.position}</span>
-                      <strong className="medal__title">{item.title}</strong>
-                      {item.subtitle && (
-                        <span className="medal__sub">{item.subtitle}</span>
-                      )}
+                    <li key={`${tier.tier}-${i}`} style={{ listStyle: 'none' }}>
+                      <a
+                        href={item.link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`medal medal--t${tier.tier}`}
+                      >
+                        <span className="medal__icon">{item.position}</span>
+                        <strong className="medal__title">{item.title}</strong>
+                        {item.subtitle && (
+                          <span className="medal__sub">{item.subtitle}</span>
+                        )}
+                      </a>
                     </li>
                   ))
                 )}
