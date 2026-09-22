@@ -1,11 +1,11 @@
 /**
  * Home.jsx — The full portfolio page with proper layout and typography.
- * Phase 2: All sections styled with real spacing, type hierarchy, and structure.
- * Animation and interactive components come in later phases.
+ * Phase 3: Isometric room + scroll scene replace hero/story placeholders.
  */
 import Nav from '../components/Nav';
+import IsometricRoom from '../components/IsometricRoom';
+import ScrollScene from '../scene/ScrollScene';
 import siteData from '../content/site.json';
-import storyData from '../content/story.json';
 import projectsData from '../content/projects.json';
 import winsData from '../content/wins.json';
 import journeyData from '../content/journey.json';
@@ -34,33 +34,15 @@ export default function Home() {
       <Nav />
 
       <main id="main-content">
-        {/* ===== HERO (placeholder for scroll scene) ===== */}
-        <section id="scene" className="hero-section">
-          <div className="hero-content">
-            <h1 className="hero-headline">{siteData.hero.headline}</h1>
-            <p className="hero-line">{siteData.hero.line}</p>
-            <p className="hero-hint">
-              <span className="hero-hint__line" />
-              {siteData.hero.scrollHint}
-            </p>
-          </div>
-        </section>
+        {/* ===== ISOMETRIC ROOM HERO ===== */}
+        <IsometricRoom />
 
-        {/* ===== STORY CHAPTERS (placeholder for scroll scene) ===== */}
-        <section className="story-placeholder section" aria-label="Story chapters">
-          <div className="wrap">
-            {storyData.map((chapter) => (
-              <article key={chapter.id} className="story-chapter">
-                <span className="story-chapter__label">{chapter.subtitle}</span>
-                <h2 className="story-chapter__title">{chapter.title}</h2>
-                <p className="story-chapter__body">{chapter.body}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+        {/* ===== SCROLL SCENE (night to dawn) ===== */}
+        <ScrollScene />
 
         {/* ===== TRANSITION TO EMBER ===== */}
         <div className="handoff" aria-hidden="true" />
+
 
         {/* ===== WHAT I DO ===== */}
         <section id="what" className="section after-scene">
