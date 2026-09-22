@@ -1,0 +1,124 @@
+/* =========================================
+   Medal Ceremony — animated podium + confetti
+   ========================================= */
+
+.ceremony {
+  margin-top: 56px;
+  padding: 34px 20px 26px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: radial-gradient(
+    120% 140% at 50% 100%,
+    rgba(242, 180, 65, 0.08),
+    transparent 60%
+  );
+  position: relative;
+  text-align: center;
+}
+
+.ceremony__svg {
+  width: min(340px, 72vw);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.ceremony__confetti {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: min(340px, 72vw);
+  height: 60%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  overflow: visible;
+}
+
+.ceremony__caption {
+  font-family: var(--prose);
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  transition: opacity 0.5s;
+}
+
+/* Medal animation states */
+.ceremony__head {
+  transition: transform 0.5s var(--ease-soft);
+  transform-origin: 0px -30px;
+}
+
+.ceremony--play .ceremony__head {
+  transform: rotate(8deg);
+}
+
+.ceremony__medal {
+  transition: opacity 0.3s 0.55s, transform 1.1s 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(-46px) scale(0.6);
+  transform-origin: 0px -70px;
+}
+
+.ceremony--play .ceremony__medal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ----- Win video screen ----- */
+.ceremony__video-wrap {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s 1.2s var(--ease-soft), transform 0.6s 1.2s var(--ease-soft);
+}
+
+.ceremony--play .ceremony__video-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ceremony__video-frame {
+  position: relative;
+  width: min(320px, 80vw);
+  border-radius: var(--radius-frame);
+  overflow: hidden;
+  box-shadow:
+    0 0 30px rgba(242, 180, 65, 0.2),
+    0 8px 30px -8px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(242, 180, 65, 0.3);
+}
+
+.ceremony__video-frame::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius-frame);
+  background: linear-gradient(135deg, rgba(242, 180, 65, 0.3), transparent 50%, rgba(242, 180, 65, 0.15));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ceremony__video {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-frame);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ceremony__medal {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .ceremony__head {
+    transition: none;
+  }
+
+  .ceremony__video-wrap {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

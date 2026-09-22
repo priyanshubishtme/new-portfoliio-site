@@ -1,12 +1,13 @@
 /**
- * Home.jsx — The full portfolio page with proper layout and typography.
- * Phase 3: Isometric room + scroll scene replace hero/story placeholders.
+ * Home.jsx — The full portfolio page.
+ * Phase 5: Real interactive components for projects (3D books) and wins (ceremony).
  */
 import Nav from '../components/Nav';
 import IsometricRoom from '../components/IsometricRoom';
 import ScrollScene from '../scene/ScrollScene';
+import Reader from '../projects/Reader';
+import Ceremony from '../wins/Ceremony';
 import siteData from '../content/site.json';
-import projectsData from '../content/projects.json';
 import winsData from '../content/wins.json';
 import journeyData from '../content/journey.json';
 import { parseFrontmatter } from '../lib/frontmatter';
@@ -98,39 +99,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ===== PROJECTS ===== */}
+        {/* ===== PROJECTS (3D Book Shelf + Reader) ===== */}
         <section id="projects" className="section after-scene">
           <div className="wrap">
             <h2 className="section-title">Projects</h2>
             <p className="section-sub">
               Two books on the shelf. Open one to read the story.
             </p>
-            <div className="projects-grid">
-              {projectsData.map((project) => (
-                <article key={project.id} className="project-card">
-                  <h3 className="project-card__title">{project.title}</h3>
-                  <p className="project-card__kind">{project.kind}</p>
-                  <p className="project-card__desc">{project.description}</p>
-                  <div className="project-card__facts">
-                    {project.facts.map((f, i) => (
-                      <div key={i} className="project-card__fact">
-                        <strong>{f.value}</strong>
-                        <span>{f.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="project-card__stack">
-                    {project.stack.map((s) => (
-                      <span key={s} className="chip">{s}</span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
+            <Reader />
           </div>
         </section>
 
-        {/* ===== WINS ===== */}
+        {/* ===== WINS (Medal Ceremony + Shelf) ===== */}
         <section id="wins" className="section after-scene">
           <div className="wrap">
             <h2 className="section-title">Wins</h2>
@@ -138,22 +118,29 @@ export default function Home() {
               Coding, design, quizzes and stages. Some first places, and some
               finals I'm just as proud of.
             </p>
-            <ul className="medal-shelf">
-              {winsData.tiers.map((tier) =>
-                tier.items.map((item, i) => (
-                  <li
-                    key={`${tier.tier}-${i}`}
-                    className={`medal medal--t${tier.tier}`}
-                  >
-                    <span className="medal__icon">{item.position}</span>
-                    <strong className="medal__title">{item.title}</strong>
-                    {item.subtitle && (
-                      <span className="medal__sub">{item.subtitle}</span>
-                    )}
-                  </li>
-                ))
-              )}
-            </ul>
+
+            {/* Medal ceremony — plays once on scroll */}
+            <Ceremony />
+
+            {/* Medal shelf */}
+            <div style={{ marginTop: 64 }}>
+              <ul className="medal-shelf">
+                {winsData.tiers.map((tier) =>
+                  tier.items.map((item, i) => (
+                    <li
+                      key={`${tier.tier}-${i}`}
+                      className={`medal medal--t${tier.tier}`}
+                    >
+                      <span className="medal__icon">{item.position}</span>
+                      <strong className="medal__title">{item.title}</strong>
+                      {item.subtitle && (
+                        <span className="medal__sub">{item.subtitle}</span>
+                      )}
+                    </li>
+                  ))
+                )}
+              </ul>
+            </div>
           </div>
         </section>
 
