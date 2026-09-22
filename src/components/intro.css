@@ -1,0 +1,81 @@
+/* =========================================
+   Intro — "Dream with Priyanshu" entrance
+   ========================================= */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--night);
+  display: grid;
+  place-items: center;
+  transition: opacity 1s var(--ease-soft), visibility 1s;
+}
+
+.intro--done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro__inner {
+  text-align: center;
+}
+
+/* Twinkling star */
+.intro__star {
+  width: 10px;
+  height: 10px;
+  margin: 0 auto 26px;
+  border-radius: 50%;
+  background: #fff6dc;
+  box-shadow: 0 0 22px 8px rgba(255, 226, 150, 0.7);
+  animation: introTwinkle 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes introTwinkle {
+  from { transform: scale(0.6); opacity: 0.5; }
+  to { transform: scale(1.15); opacity: 1; }
+}
+
+/* Brand name — letters animate in */
+.intro__name {
+  font-weight: 800;
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  letter-spacing: -0.02em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.intro__name span {
+  opacity: 0;
+  transform: translateY(0.4em);
+  animation: introChar 0.7s var(--ease-soft) forwards;
+}
+
+@keyframes introChar {
+  to { opacity: 1; transform: none; }
+}
+
+/* Skip button */
+.intro__skip {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  opacity: 0;
+  animation: introSkipIn 0.3s 0.6s forwards;
+}
+
+@keyframes introSkipIn {
+  to { opacity: 1; }
+}
+
+.intro__skip:hover {
+  background: rgba(243, 234, 217, 0.08);
+}

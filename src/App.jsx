@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { initLenis, destroyLenis } from './lib/lenis';
+import Intro from './components/Intro';
+import CursorGlow from './components/CursorGlow';
 import Home from './pages/Home';
 import Note from './pages/Note';
 
@@ -18,8 +20,14 @@ export default function App() {
 
   return (
     <>
+      {/* Intro animation — plays once per session */}
+      <Intro />
+
       {/* Film grain overlay */}
       <div className="grain" aria-hidden="true" />
+
+      {/* Cursor glow (desktop only) */}
+      <CursorGlow />
 
       <Routes>
         <Route path="/" element={<Home />} />

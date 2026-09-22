@@ -1,0 +1,137 @@
+/* =========================================
+   Note reading page styles
+   ========================================= */
+
+.note-page {
+  min-height: 100vh;
+  padding: 0 var(--pad);
+  background: var(--ember);
+}
+
+.note-page__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 90px 0 120px;
+}
+
+.note-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.note-page__back:hover {
+  color: var(--cream);
+}
+
+/* Reading progress bar */
+.note-page__progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), #e8a63e);
+  z-index: 80;
+  transition: width 0.1s linear;
+  border-radius: 0 4px 4px 0;
+}
+
+.note-page h1 {
+  font-family: var(--prose);
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-top: 28px;
+  color: var(--cream);
+}
+
+.note-page__meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 14px 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.note-page__sample {
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* Prose article */
+.note-page article {
+  font-family: var(--prose);
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  line-height: 1.7;
+  color: rgba(243, 234, 217, 0.92);
+}
+
+.note-page article p {
+  margin-bottom: 1.5em;
+}
+
+.note-page article strong {
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.note-page article em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.note-page article h2,
+.note-page article h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  margin: 2em 0 0.6em;
+  color: var(--cream);
+}
+
+.note-page article h2 {
+  font-size: 1.5em;
+}
+
+.note-page article h3 {
+  font-size: 1.2em;
+}
+
+.note-page article ul,
+.note-page article ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.note-page article li {
+  list-style-type: disc;
+  margin-bottom: 0.4em;
+}
+
+.note-page article blockquote {
+  border-left: 3px solid var(--gold);
+  margin: 1.5em 0;
+  padding: 0.5em 1em;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.note-page article code {
+  font-family: 'Courier New', monospace;
+  background: rgba(243, 234, 217, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.note-page__footer {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--prose);
+}
