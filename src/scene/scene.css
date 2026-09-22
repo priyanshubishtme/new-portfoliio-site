@@ -232,7 +232,7 @@
   position: absolute;
   left: var(--pad);
   top: 50%;
-  width: min(44vw, 600px);
+  width: min(40vw, 500px); /* Reduced width to prevent overlap */
   opacity: 0;
   pointer-events: none;
   will-change: transform, opacity;
@@ -240,7 +240,7 @@
 }
 
 .chapter--wide {
-  width: min(54vw, 760px);
+  width: min(50vw, 700px);
 }
 
 .chapter__label {
@@ -252,16 +252,16 @@
   font-family: var(--prose);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(2.6rem, 6vw, 5.4rem);
-  line-height: 1;
+  font-size: clamp(2.2rem, 4vw, 3.8rem); /* Reduced from 5.4rem max */
+  line-height: 1.1;
   letter-spacing: -0.015em;
-  margin: 14px 0 22px;
+  margin: 12px 0 20px;
 }
 
 .chapter__body {
   font-family: var(--prose);
-  font-size: var(--fs-body);
-  line-height: 1.62;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.6;
   color: rgba(243, 234, 217, 0.92);
 }
 
