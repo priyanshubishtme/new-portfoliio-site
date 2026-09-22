@@ -1,0 +1,40 @@
+/* =========================================
+   Design Tokens — Dream with Priyanshu
+   All visual constants live here.
+   ========================================= */
+
+:root {
+  /* ----- Colors ----- */
+  --night: #05070D;       /* page start, deepest sky */
+  --midnight: #0F1B3D;    /* rim-light blue from the avatar */
+  --ember: #2B1B12;       /* warm dark brown */
+  --gold: #F2B441;        /* stars, sun, accents, focus rings */
+  --cream: #F3EAD9;       /* text */
+  --muted: rgba(243, 234, 217, 0.66);
+  --line: rgba(243, 234, 217, 0.14);
+
+  /* ----- Typography ----- */
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --prose: 'Newsreader', Georgia, serif;
+
+  /* ----- Fluid Type Scale ----- */
+  --fs-hero:   clamp(2.7rem, 7.4vw, 6.6rem);
+  --fs-h2:     clamp(2rem, 4.6vw, 3.6rem);
+  --fs-h3:     clamp(1.5rem, 2.6vw, 2.1rem);
+  --fs-body:   clamp(1.02rem, 1.4vw, 1.32rem);
+  --fs-prose:  clamp(1.05rem, 1.5vw, 1.3rem);
+  --fs-small:  0.85rem;
+  --fs-tiny:   0.78rem;
+
+  /* ----- Motion ----- */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-soft: 0.8s;
+
+  /* ----- Radii ----- */
+  --radius-panel: 20px;
+  --radius-frame: 14px;
+  --radius-pill: 999px;
+
+  /* ----- Spacing ----- */
+  --pad: clamp(22px, 6vw, 96px);
+}

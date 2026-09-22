@@ -1,0 +1,70 @@
+{
+  "tiers": [
+    {
+      "tier": 1,
+      "label": "Gold",
+      "items": [
+        {
+          "title": "CodeCraft 2025",
+          "subtitle": "Hack the Spring, Bhimtal",
+          "position": "1st",
+          "type": "Coding competition"
+        },
+        {
+          "title": "Budget Lens 2026",
+          "subtitle": "First prize",
+          "position": "1st",
+          "type": "TODO: confirm exact title"
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "label": "Silver",
+      "items": [
+        {
+          "title": "Design Spark 2026",
+          "subtitle": null,
+          "position": "Runner up",
+          "type": "Design"
+        },
+        {
+          "title": "Webathon 2.0",
+          "subtitle": "Second runner up",
+          "position": "2nd",
+          "type": "TODO: confirm year"
+        },
+        {
+          "title": "Tech Quiz",
+          "subtitle": "Twice, university level",
+          "position": "2nd",
+          "type": "Quiz"
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "label": "Bronze",
+      "items": [
+        {
+          "title": "Watch the Code",
+          "subtitle": "National hackathon",
+          "position": "Final",
+          "type": "Hackathon"
+        },
+        {
+          "title": "Nirvan",
+          "subtitle": "National hackathon",
+          "position": "Final",
+          "type": "Hackathon"
+        },
+        {
+          "title": "Monthly Coding Series",
+          "subtitle": "Gold, silver, bronze",
+          "position": "3x",
+          "type": "University-level contests"
+        }
+      ]
+    }
+  ]
+}

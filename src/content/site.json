@@ -1,0 +1,36 @@
+{
+  "name": "Priyanshu Bisht",
+  "brand": "Dream with Priyanshu",
+  "hero": {
+    "headline": "Hi, I'm Priyanshu.",
+    "line": "Nineteen, a builder and creator, curious about tech, people, ideas and life.",
+    "scrollHint": "Scroll to walk through my story"
+  },
+  "nav": [
+    { "label": "Story", "href": "#scene" },
+    { "label": "What I do", "href": "#what" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Wins", "href": "#wins" },
+    { "label": "Notes", "href": "#notes" }
+  ],
+  "cta": { "label": "Let's talk", "href": "#contact" },
+  "location": "Rudrapur, Uttarakhand, India",
+  "links": {
+    "linkedin": "https://linkedin.com/in/priyanshubishtme",
+    "github": "https://github.com/priyanshubishtme",
+    "instagram": "https://instagram.com/priyanshubishtme",
+    "youtube": "https://youtube.com/@priyanshubishtme",
+    "linktree": "https://linktr.ee/priyanshubisht.me",
+    "email": "priyanshubisht.me@gmail.com",
+    "booking": null
+  },
+  "resume": "/resume.pdf",
+  "assets": {
+    "avatar": "avatar.png",
+    "campus": "campus-banner.png",
+    "room": "isometric-room.jpg",
+    "winVideo": "everything_is_okay_make_it_ani.mp4"
+  },
+  "notesIntro": "A place to share ideas and have meaningful conversations.",
+  "postFooter": "Want to talk about this? Book a session or send me an email."
+}

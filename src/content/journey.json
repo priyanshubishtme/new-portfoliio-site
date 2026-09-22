@@ -1,0 +1,42 @@
+{
+  "whatIDo": [
+    {
+      "heading": "I build.",
+      "body": "Client-focused web products across frontend, backend, APIs and databases, from the first requirement to delivery."
+    },
+    {
+      "heading": "I explore.",
+      "body": "I'm studying AI and data science, and I like teaching machines things, like how to drive a car."
+    },
+    {
+      "heading": "I create and connect.",
+      "body": "I make content, share ideas, and give back to the juniors who come after me."
+    }
+  ],
+  "skills": "Java and JavaScript (advanced), Python (intermediate), React.js, Node.js, MySQL, Git and GitHub, data structures and algorithms.",
+  "experience": [
+    {
+      "title": "Software Engineer Intern",
+      "company": "ElvoraGo",
+      "period": "Sep 2026 to present",
+      "description": [
+        "Develop client-focused web solutions across frontend, backend, APIs and databases, turning requirements into functional, scalable work.",
+        "Lead client outreach and networking: prospecting, requirement gathering, project coordination and delivery."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Graphic Era Hill University",
+      "degree": "Bachelor of Computer Applications (AI & Data Science)",
+      "period": "Jul 2024 to Jul 2027",
+      "grade": "CGPA 9.48"
+    },
+    {
+      "school": "Jaycees Public School",
+      "degree": "Intermediate (Senior Secondary)",
+      "period": "May 2022 to May 2024",
+      "grade": "86%"
+    }
+  ]
+}

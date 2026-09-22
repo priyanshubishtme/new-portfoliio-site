@@ -1,0 +1,40 @@
+[
+  {
+    "id": "ashapure",
+    "title": "AshaPure",
+    "kind": "A smart milk delivery platform",
+    "description": "A MERN dairy e-commerce platform supporting shopping, checkout, orders, subscriptions, rewards and admin operations.",
+    "story": [
+      "A MERN dairy e-commerce platform supporting shopping, checkout, orders, subscriptions, rewards and admin operations. I owned it end to end: schema, routes, auth and the UI.",
+      "The hardest part wasn't a single feature, it was making all of them agree: an order touches inventory, a subscription touches billing, a reward touches both. Keeping that consistent is what the route and endpoint count really represents."
+    ],
+    "facts": [
+      { "value": "18", "label": "frontend routes" },
+      { "value": "25", "label": "REST endpoints" },
+      { "value": "JWT", "label": "role-based access" },
+      { "value": "4", "label": "viewport sizes tested" }
+    ],
+    "stack": ["React.js", "Node.js", "Express.js", "MongoDB"],
+    "github": null,
+    "image": null
+  },
+  {
+    "id": "arena-self-driving",
+    "title": "Arena Self-Driving",
+    "kind": "An autonomous highway driving simulator",
+    "description": "A reinforcement learning simulator where an agent learns to drive with tabular SARSA.",
+    "story": [
+      "A reinforcement learning simulator where an agent learns to drive with tabular SARSA, on a highway with other cars, using a discretized state space.",
+      "I recorded my own driving as human demonstrations and used them to warm-start training, so the agent didn't learn from nothing. Training metrics stream to the browser live, so I can watch the policy improve instead of guessing from a log file."
+    ],
+    "facts": [
+      { "value": "864", "label": "discretized states" },
+      { "value": "5", "label": "driving actions" },
+      { "value": "4,320", "label": "Q-table entries" },
+      { "value": "4", "label": "live training metrics" }
+    ],
+    "stack": ["Python", "HighwayEnv", "Gymnasium", "NumPy", "FastAPI", "PyGame"],
+    "github": null,
+    "image": null
+  }
+]

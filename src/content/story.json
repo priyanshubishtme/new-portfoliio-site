@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "The signal",
+    "subtitle": "Why I started coding",
+    "body": "Computer science was the first subject where I could build, not just memorize. In classes 11 and 12, that hands-on process pulled me in completely, and by the end I knew what I wanted: to make things, not just study them."
+  },
+  {
+    "id": 2,
+    "title": "A beginning, not an end",
+    "subtitle": "The first hackathon",
+    "body": "My first hackathon ended in a project that didn't work the way we planned. It taught me more than any course could: that shipping something imperfect beats not shipping at all. That failure became the starting point for everything after it."
+  },
+  {
+    "id": 3,
+    "title": "Learning to speak",
+    "subtitle": "The stage",
+    "body": "For a long time I stayed quiet in rooms full of people. The first time I walked on stage to introduce myself, unprepared and unsure, changed that. It's a habit I'm still building, one event at a time."
+  },
+  {
+    "id": 4,
+    "title": "Eight minutes",
+    "subtitle": "Budget Lens",
+    "body": "At Budget Lens, an eight-minute presentation and a sharper Q&A round earned us first prize. It was proof that preparation and a clear point of view can hold up under pressure."
+  },
+  {
+    "id": 5,
+    "title": "What drives me",
+    "subtitle": "The story so far",
+    "body": "I'm drawn to building things that work, learning in public, and helping the people a step behind me. I don't have it all figured out, and I don't think anyone does at nineteen. But I'd rather try and adjust than wait for certainty."
+  }
+]
