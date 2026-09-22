@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function TypewriterText({ text }) {
+export default function TypewriterText({ text, autoStart = false }) {
   const [displayed, setDisplayed] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
+  const [isTyping, setIsTyping] = useState(autoStart);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -12,12 +12,16 @@ export default function TypewriterText({ text }) {
       return;
     }
 
+    if (autoStart) {
+      setIsTyping(true);
+      return;
+    }
+
     const el = containerRef.current;
     if (!el) return;
 
     // We watch the parent's opacity. If it becomes visible (>0.1), we type.
     const observer = new MutationObserver(() => {
-      // Traverse up to find the .chapter element which has the opacity set
       const chapterEl = el.closest('.chapter');
       if (chapterEl) {
         const opacity = parseFloat(chapterEl.style.opacity || '0');
@@ -33,7 +37,7 @@ export default function TypewriterText({ text }) {
     }
 
     return () => observer.disconnect();
-  }, [displayed.length, isTyping, text]);
+  }, [displayed.length, isTyping, text, autoStart]);
 
   useEffect(() => {
     if (isTyping) {
