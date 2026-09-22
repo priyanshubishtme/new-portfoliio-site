@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import projectsData from '../content/projects.json';
 import './reader.css';
+import TypewriterText from './../components/TypewriterText';
 
 // SVG book covers (shelf version)
 function BookCover({ index }) {
@@ -171,7 +172,9 @@ export default function Reader() {
                       <div className="pg__label">
                         Page {idx + 1} of {project.story.length}
                       </div>
-                      <p>{para}</p>
+                      <p>
+                        <TypewriterText text={para} autoStart={true} />
+                      </p>
                     </div>
                   </Page>
                 ))}
