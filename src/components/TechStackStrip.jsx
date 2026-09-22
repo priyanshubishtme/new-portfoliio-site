@@ -19,12 +19,13 @@ export default function TechStackStrip() {
       <div className="tech-strip__label">TECH STACK</div>
       <div className="tech-strip__inner">
         {loop.map((tech, i) => (
-          <div 
-            key={i} 
-            className="tech-strip__item"
-            dangerouslySetInnerHTML={{ __html: tech.svg }}
-            title={tech.name}
-          />
+          <div key={i} className="tech-strip__item" title={tech.name}>
+            <div 
+              className="tech-strip__icon"
+              dangerouslySetInnerHTML={{ __html: tech.svg }}
+            />
+            <span className="tech-strip__name">{tech.name}</span>
+          </div>
         ))}
       </div>
     </div>

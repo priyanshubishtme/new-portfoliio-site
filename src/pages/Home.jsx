@@ -61,7 +61,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <p className="what-skills">{journeyData.skills}</p>
             <TechStackStrip />
           </div>
         </section>
