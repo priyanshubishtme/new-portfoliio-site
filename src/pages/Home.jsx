@@ -1,6 +1,6 @@
 /**
  * Home.jsx — The full portfolio page.
- * Phase 5: Real interactive components for projects (3D books) and wins (ceremony).
+ * Phase 8: Scroll-reveal polish applied to all sections.
  */
 import Nav from '../components/Nav';
 import IsometricRoom from '../components/IsometricRoom';
@@ -11,6 +11,7 @@ import siteData from '../content/site.json';
 import winsData from '../content/wins.json';
 import journeyData from '../content/journey.json';
 import { parseFrontmatter } from '../lib/frontmatter';
+import { useScrollReveal } from '../lib/useScrollReveal';
 import './Home.css';
 
 // Import blog posts
@@ -26,6 +27,8 @@ const posts = Object.entries(postModules).map(([, raw]) => {
 });
 
 export default function Home() {
+  useScrollReveal();
+
   return (
     <>
       <a href="#main-content" className="skip-link">
@@ -48,8 +51,8 @@ export default function Home() {
         {/* ===== WHAT I DO ===== */}
         <section id="what" className="section after-scene">
           <div className="wrap">
-            <h2 className="section-title">What I do</h2>
-            <div className="what-rows">
+            <h2 className="section-title reveal">What I do</h2>
+            <div className="what-rows reveal-stagger">
               {journeyData.whatIDo.map((item, i) => (
                 <div key={i} className="what-row">
                   <h3 className="what-row__heading">{item.heading}</h3>
@@ -64,7 +67,7 @@ export default function Home() {
         {/* ===== JOURNEY ===== */}
         <section id="journey" className="section after-scene" style={{ paddingTop: 0 }}>
           <div className="wrap">
-            <h2 className="section-title">Where I've been</h2>
+            <h2 className="section-title reveal">Where I've been</h2>
             <div className="journey-cols">
               {/* Experience */}
               <div className="timeline">
@@ -102,8 +105,8 @@ export default function Home() {
         {/* ===== PROJECTS (3D Book Shelf + Reader) ===== */}
         <section id="projects" className="section after-scene">
           <div className="wrap">
-            <h2 className="section-title">Projects</h2>
-            <p className="section-sub">
+            <h2 className="section-title reveal">Projects</h2>
+            <p className="section-sub reveal">
               Two books on the shelf. Open one to read the story.
             </p>
             <Reader />
@@ -113,8 +116,8 @@ export default function Home() {
         {/* ===== WINS (Medal Ceremony + Shelf) ===== */}
         <section id="wins" className="section after-scene">
           <div className="wrap">
-            <h2 className="section-title">Wins</h2>
-            <p className="section-sub">
+            <h2 className="section-title reveal">Wins</h2>
+            <p className="section-sub reveal">
               Coding, design, quizzes and stages. Some first places, and some
               finals I'm just as proud of.
             </p>
@@ -147,8 +150,8 @@ export default function Home() {
         {/* ===== NOTES ===== */}
         <section id="notes" className="section after-scene">
           <div className="wrap">
-            <h2 className="section-title">Notes and conversations</h2>
-            <p className="section-sub">{siteData.notesIntro}</p>
+            <h2 className="section-title reveal">Notes and conversations</h2>
+            <p className="section-sub reveal">{siteData.notesIntro}</p>
             <div className="notes-list">
               {posts.map((post) => (
                 <a
