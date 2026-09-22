@@ -166,17 +166,35 @@
   position: relative;
 }
 
-/* Ascending journey path */
+/* Ascending journey path (Rocket exhaust) */
 .journey-cols::before {
   content: '';
   position: absolute;
   left: 20px;
-  top: 0;
+  top: 24px;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(to top, rgba(255,255,255,0.05) 0%, var(--gold) 100%);
-  border-radius: 2px;
+  width: 3px;
+  background: linear-gradient(to top, rgba(10, 10, 15, 0) 0%, rgba(242, 180, 65, 0.5) 70%, #fff 100%);
+  border-radius: 4px;
   z-index: 0;
+  box-shadow: 0 0 12px rgba(242, 180, 65, 0.8);
+}
+
+/* The Rocket */
+.journey-cols::after {
+  content: '🚀';
+  position: absolute;
+  left: 8px;
+  top: -12px;
+  font-size: 1.6rem;
+  z-index: 2;
+  filter: drop-shadow(0 0 10px rgba(242, 180, 65, 0.9));
+  animation: rocketHover 2s ease-in-out infinite alternate;
+}
+
+@keyframes rocketHover {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
 }
 
 .timeline {
@@ -407,41 +425,30 @@
   width: 104px;
   height: 104px;
   font-size: 1.5rem;
-  background: radial-gradient(
-    circle at 34% 28%,
-    #fff0bd,
-    var(--gold) 52%,
-    #a86f18
-  );
-  box-shadow: 0 0 42px rgba(242, 180, 65, 0.4);
+  background: radial-gradient(circle at 34% 28%, #fff0bd, var(--gold) 52%, #a86f18);
+  box-shadow: 0 0 30px rgba(242, 180, 65, 0.4), inset 0 -6px 12px rgba(168, 111, 24, 0.8), inset 0 6px 12px rgba(255, 240, 189, 0.9);
+  border: 3px solid #ffeba1;
 }
 
 /* Tier 2 — Silver */
 .medal--t2 .medal__icon {
-  width: 78px;
-  height: 78px;
-  font-size: 0.86rem;
-  background: radial-gradient(
-    circle at 34% 28%,
-    #fbf8f0,
-    #cdc6b6 55%,
-    #7c7768
-  );
-  box-shadow: 0 0 26px rgba(243, 234, 217, 0.16);
+  width: 82px;
+  height: 82px;
+  font-size: 0.9rem;
+  background: radial-gradient(circle at 34% 28%, #ffffff, #e0e0e0 52%, #9e9e9e);
+  box-shadow: 0 0 24px rgba(224, 224, 224, 0.3), inset 0 -4px 8px rgba(158, 158, 158, 0.8), inset 0 4px 8px rgba(255, 255, 255, 0.9);
+  border: 2px solid #ffffff;
 }
 
 /* Tier 3 — Bronze */
 .medal--t3 .medal__icon {
-  width: 58px;
-  height: 58px;
-  font-size: 0.8rem;
-  background: radial-gradient(
-    circle at 34% 28%,
-    #5b4636,
-    #33231a 64%
-  );
+  width: 64px;
+  height: 64px;
+  font-size: 0.75rem;
+  background: radial-gradient(circle at 34% 28%, #e6a87c, #b36b39 64%, #5b4636);
+  box-shadow: 0 0 18px rgba(179, 107, 57, 0.3), inset 0 -3px 6px rgba(91, 70, 54, 0.8), inset 0 3px 6px rgba(230, 168, 124, 0.9);
+  border: 2px solid #e6a87c;
   color: var(--cream);
-  border: 1px solid var(--line);
 }
 
 .medal:hover .medal__icon {

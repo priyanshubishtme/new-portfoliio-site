@@ -28,8 +28,9 @@ export default function CursorGlow() {
     };
 
     const animate = () => {
-      cx += (mx - cx) * 0.09;
-      cy += (my - cy) * 0.09;
+      // Increased lerp factor from 0.09 to 0.25 for smoother, less laggy tracking
+      cx += (mx - cx) * 0.25;
+      cy += (my - cy) * 0.25;
       el.style.transform = `translate3d(${cx}px,${cy}px,0)`;
       requestAnimationFrame(animate);
     };
