@@ -11,6 +11,8 @@ export default function CursorGlow() {
     // Don't run on touch devices
     if (window.matchMedia('(hover: none)').matches) return;
 
+    document.body.classList.add('custom-cursor-active');
+
     const el = glowRef.current;
     if (!el) return;
 
@@ -38,6 +40,7 @@ export default function CursorGlow() {
     return () => {
       window.removeEventListener('pointermove', handleMove);
       cancelAnimationFrame(animId);
+      document.body.classList.remove('custom-cursor-active');
     };
   }, []);
 
