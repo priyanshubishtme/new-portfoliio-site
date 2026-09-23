@@ -19,6 +19,16 @@
   -webkit-backdrop-filter: blur(12px);
   font-size: 0.9rem;
   white-space: nowrap;
+  opacity: 0;
+}
+
+@keyframes navDrop {
+  0% { transform: translate(-50%, -20px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 1; }
+}
+
+body.intro-done .nav {
+  animation: navDrop 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .nav__brand {

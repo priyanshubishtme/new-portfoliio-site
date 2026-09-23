@@ -5,7 +5,7 @@
 /* Container: tall section that drives the scroll */
 .scroll-scene {
   position: relative;
-  height: 900vh;
+  height: 550vh;
   background: var(--night);
 }
 
@@ -142,10 +142,20 @@
   100% { opacity: 0.8; transform: scale(1.1); }
 }
 
+@keyframes avatarPop {
+  0% { transform: scale(0.9) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
 .scene-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+}
+
+body.intro-done .scene-avatar img {
+  animation: avatarPop 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
 }
 
 /* ----- Campus panorama ----- */
@@ -214,16 +224,13 @@
   overflow: hidden;
 }
 
-.hero-line-wrap > span {
-  display: inline-block;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s, opacity 1s 0.1s;
+@keyframes heroPop {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 body.intro-done .hero-line-wrap > span {
-  transform: translateY(0);
-  opacity: 1;
+  animation: heroPop 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .scene-hero h1 {
@@ -241,14 +248,16 @@ body.intro-done .hero-line-wrap > span {
   color: var(--muted);
   margin-top: clamp(18px, 3vh, 34px);
   max-width: 30em;
-  transform: translateY(20px);
   opacity: 0;
-  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s, opacity 1s 0.3s;
+}
+
+@keyframes tagPop {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 body.intro-done .scene-hero__tag {
-  transform: translateY(0);
-  opacity: 1;
+  animation: tagPop 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
 }
 
 .scene-hero__hint {
