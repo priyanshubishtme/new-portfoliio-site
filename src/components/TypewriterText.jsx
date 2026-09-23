@@ -2,49 +2,45 @@ import { useState, useEffect, useRef } from 'react';
 
 /**
  * TypewriterText — Types out text character by character
- * when the parent chapter element becomes active (data-active="true").
- *
- * Falls back to showing all text immediately if not inside a chapter.
+ * when the element becomes visible in the viewport.
  */
-export default function TypewriterText({ text, speed = 18 }) {
+export default function TypewriterText({ text, speed = 16 }) {
   const [displayed, setDisplayed] = useState('');
   const [started, setStarted] = useState(false);
   const [done, setDone] = useState(false);
   const ref = useRef(null);
-  const hasStartedRef = useRef(false);
 
-  // Poll for chapter activation using MutationObserver on data-active attribute
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
     const chapterEl = el.closest('.chapter');
     if (!chapterEl) {
-      // Not inside a chapter — start immediately
       setStarted(true);
-      hasStartedRef.current = true;
       return;
     }
 
-    // Check if already active
-    if (chapterEl.dataset.active === 'true' && !hasStartedRef.current) {
+    // Check initial opacity
+    if (parseFloat(chapterEl.style.opacity || 0) > 0.4) {
       setStarted(true);
-      hasStartedRef.current = true;
-      return;
     }
 
-    // Watch for the data-active attribute change
+    // Watch for opacity changes set by ScrollScene
     const observer = new MutationObserver(() => {
-      if (chapterEl.dataset.active === 'true' && !hasStartedRef.current) {
+      const opacity = parseFloat(chapterEl.style.opacity || 0);
+      if (opacity > 0.4) {
         setStarted(true);
-        hasStartedRef.current = true;
-        observer.disconnect();
+      } else if (opacity < 0.1) {
+        // Reset when scrolled out of view so it replays
+        setStarted(false);
+        setDone(false);
+        setDisplayed('');
       }
     });
 
     observer.observe(chapterEl, {
       attributes: true,
-      attributeFilter: ['data-active'],
+      attributeFilter: ['style']
     });
 
     return () => observer.disconnect();

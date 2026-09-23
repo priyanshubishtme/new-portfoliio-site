@@ -8,7 +8,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import './intro.css';
 
-const BRAND = '· Dream with Priyanshu';
+const BRAND = 'Dream with Priyanshu';
 
 export default function Intro() {
   const [done, setDone] = useState(false);
@@ -17,26 +17,11 @@ export default function Intro() {
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Check if intro was already shown this session
-  const alreadySeen = (() => {
-    try {
-      return sessionStorage.getItem('intro_seen') === '1';
-    } catch {
-      return false;
-    }
-  })();
-
-  // Skip immediately for reduced motion or already seen
-  const skipImmediately = reducedMotion || alreadySeen;
+  const skipImmediately = reducedMotion;
 
   const endIntro = useCallback(() => {
     setDone(true);
     document.body.classList.add('intro-done');
-    try {
-      sessionStorage.setItem('intro_seen', '1');
-    } catch {
-      // sessionStorage unavailable
-    }
   }, []);
 
   useEffect(() => {
@@ -71,9 +56,6 @@ export default function Intro() {
           ))}
         </div>
       </div>
-      <button className="intro__skip" onClick={endIntro}>
-        Skip
-      </button>
     </div>
   );
 }

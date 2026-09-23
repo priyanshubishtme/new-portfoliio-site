@@ -5,7 +5,7 @@
 /* Container: tall section that drives the scroll */
 .scroll-scene {
   position: relative;
-  height: 720vh;
+  height: 400vh;
   background: var(--night);
 }
 
@@ -45,7 +45,7 @@
 }
 
 .sky--dawn {
-  background: linear-gradient(180deg, #1d1512 0%, #2a1a10 30%, #4a2a12 70%, #8a5a28 100%);
+  background: linear-gradient(180deg, #0d0908 0%, #160e0a 30%, #1e130c 70%, #2a1a10 100%);
 }
 
 /* ----- Stars canvas ----- */
@@ -102,9 +102,9 @@
   will-change: opacity, transform;
   background: radial-gradient(
     circle,
-    rgba(255, 241, 201, 0.35) 0,
-    rgba(255, 225, 140, 0.2) 18%,
-    rgba(242, 180, 65, 0.08) 44%,
+    rgba(255, 241, 201, 0.15) 0,
+    rgba(255, 225, 140, 0.1) 18%,
+    rgba(242, 180, 65, 0.05) 44%,
     transparent 68%
   );
 }
@@ -304,9 +304,10 @@ body.intro-done .scene-hero__tag {
 
 .chapter__body {
   font-family: var(--prose);
-  font-size: var(--fs-body);
-  line-height: 1.62;
-  color: rgba(243, 234, 217, 0.92);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.65;
+  color: rgba(243, 234, 217, 0.95);
+  letter-spacing: 0.01em;
 }
 
 /* ----- Progress dots ----- */

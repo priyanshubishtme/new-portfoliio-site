@@ -150,7 +150,7 @@ export default function ScrollScene() {
       // Hero text
       const isMobile = window.innerWidth <= 820;
       if (heroRef.current) {
-        const hp = ease(seg(p, 0.05, 0.13));
+        const hp = ease(seg(p, 0.04, 0.10));
         heroRef.current.style.opacity = 1 - hp;
         heroRef.current.style.transform = isMobile
           ? `translateY(${-hp * 36}px)`
@@ -159,30 +159,27 @@ export default function ScrollScene() {
 
       // Scroll hint
       if (hintRef.current) {
-        hintRef.current.style.opacity = 1 - seg(p, 0, 0.04);
+        hintRef.current.style.opacity = 1 - seg(p, 0.02, 0.08);
       }
 
-      // Avatar parallax
+      // Avatar parallax (stays visible until campus cross-fade)
       if (avatarRef.current) {
-        const av =
-          p < 0.3
-            ? 1 - 0.75 * ease(seg(p, 0.10, 0.30))
-            : 0.25 * (1 - ease(seg(p, 0.30, 0.48)));
-        avatarRef.current.style.opacity = av;
-        avatarRef.current.style.transform = `translate3d(0,${-seg(p, 0, 0.4) * 5}vh,0) scale(${1 + 0.05 * seg(p, 0, 0.4)})`;
+        const avOut = ease(seg(p, 0.48, 0.55));
+        avatarRef.current.style.opacity = 1 - avOut;
+        avatarRef.current.style.transform = `translate3d(0,${-seg(p, 0, 0.5) * 5}vh,0) scale(${1 + 0.05 * seg(p, 0, 0.5)})`;
       }
 
 
       // Gold orb
       if (orbRef.current) {
         orbRef.current.style.opacity =
-          ease(seg(p, 0.10, 0.18)) * (1 - ease(seg(p, 0.30, 0.40)));
-        orbRef.current.style.transform = `scale(${0.85 + 0.3 * seg(p, 0.10, 0.36)})`;
+          ease(seg(p, 0.10, 0.18)) * (1 - ease(seg(p, 0.48, 0.55)));
+        orbRef.current.style.transform = `scale(${0.85 + 0.3 * seg(p, 0.10, 0.50)})`;
       }
 
-      // Campus
+      // Campus (cross-fades directly from avatar)
       if (campusRef.current) {
-        const cIn = ease(seg(p, 0.48, 0.58));
+        const cIn = ease(seg(p, 0.48, 0.55));
         const cOut = ease(seg(p, 0.86, 0.97));
         campusRef.current.style.opacity = cIn * (1 - 0.96 * cOut);
         campusRef.current.style.transform = `translate3d(0,${(1 - ease(seg(p, 0.48, 0.62))) * 7}vh,0) scale(${1 + 0.06 * seg(p, 0.5, 0.95)})`;
@@ -273,8 +270,8 @@ export default function ScrollScene() {
       // Use debug slider if active
       const p = showDebug ? debugProgress : target;
 
-      // Smooth interpolation
-      current = current + (p - current) * 0.06;
+      // Smooth interpolation - reduced to 0.035 for premium silky feel
+      current = current + (p - current) * 0.035;
       if (Math.abs(p - current) < 0.0004) current = p;
 
       updateScene(current);
