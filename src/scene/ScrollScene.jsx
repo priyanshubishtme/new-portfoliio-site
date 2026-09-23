@@ -29,11 +29,11 @@ const ease = (t) => t * t * (3 - 2 * t); // smoothstep
 
 // Chapter timeline windows [start, end]
 const CHAPTER_WINDOWS = [
-  [0.12, 0.32],
-  [0.32, 0.52],
-  [0.52, 0.72],
-  [0.72, 0.90],
-  [0.90, 1.01],
+  [0.12, 0.28],
+  [0.32, 0.48],
+  [0.52, 0.68],
+  [0.72, 0.88],
+  [0.92, 1.05],
 ];
 
 export default function ScrollScene() {
@@ -209,8 +209,8 @@ export default function ScrollScene() {
       chapterRefs.current.forEach((el, i) => {
         if (!el) return;
         const [a, b] = CHAPTER_WINDOWS[i];
-        const inn = ease(seg(p, a - 0.02, a + 0.03));
-        const out = i < CHAPTER_WINDOWS.length - 1 ? ease(seg(p, b - 0.03, b + 0.02)) : 0;
+        const inn = ease(seg(p, a - 0.06, a + 0.06));
+        const out = i < CHAPTER_WINDOWS.length - 1 ? ease(seg(p, b - 0.06, b + 0.06)) : 0;
         const o = inn * (1 - out);
         el.style.opacity = o;
         const ty = (1 - inn) * 26 - out * 26;
@@ -218,16 +218,14 @@ export default function ScrollScene() {
           ? `translateY(${ty}px)`
           : `translateY(calc(-50% + ${ty}px))`;
           
-        const isActive = p >= a - 0.005 && (p < b || i === CHAPTER_WINDOWS.length - 1);
+        // Strict active window for typewriter
+        const isActive = p >= a && p <= b;
         if (isActive) {
           activeChapter = i;
         }
         
         if (el.dataset.active !== String(isActive)) {
           el.dataset.active = String(isActive);
-          if (isActive) {
-            el.dispatchEvent(new CustomEvent('chapter-active', { detail: true }));
-          }
         }
       });
 

@@ -176,7 +176,7 @@ export default function Reader() {
                 {/* Story Pages */}
                 {project.story.map((para, idx) => {
                   const pageIndex = idx + 2; // Cover is 0, Facts is 1
-                  const isActive = Math.abs(currentPage - pageIndex) <= 1;
+                  const isActive = pageIndex === currentPage || pageIndex === currentPage + 1;
                   return (
                     <Page key={idx}>
                       <div className="pg">

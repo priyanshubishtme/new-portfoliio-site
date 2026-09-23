@@ -44,6 +44,7 @@ export default function Home() {
         {/* ===== TRANSITION TO EMBER ===== */}
         <div className="handoff" aria-hidden="true" />
 
+        <div className="content-aurora">
 
         {/* ===== WHAT I DO ===== */}
         <section id="what" className="section after-scene">
@@ -56,6 +57,10 @@ export default function Home() {
                   <p className="what-row__body">{item.body}</p>
                 </div>
               ))}
+            </div>
+            <div className="wrap" style={{ textAlign: 'center', marginBottom: '32px', marginTop: '100px' }}>
+              <h3 className="section-title reveal" style={{ fontSize: '1.8rem' }}>Tools & Technologies</h3>
+              <p className="section-sub reveal" style={{ margin: '14px auto 0' }}>The stack I use to build scalable, premium experiences.</p>
             </div>
             <TechStackStrip />
           </div>
@@ -175,6 +180,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        </div>
 
         {/* ===== CONTACT ===== */}
         <section id="contact" className="contact-section">

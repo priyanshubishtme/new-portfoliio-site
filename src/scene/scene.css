@@ -5,7 +5,7 @@
 /* Container: tall section that drives the scroll */
 .scroll-scene {
   position: relative;
-  height: 400vh;
+  height: 900vh;
   background: var(--night);
 }
 

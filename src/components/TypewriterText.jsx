@@ -4,13 +4,29 @@ import { useState, useEffect, useRef } from 'react';
  * TypewriterText — Types out text character by character
  * when the element becomes visible in the viewport.
  */
-export default function TypewriterText({ text, speed = 16 }) {
+export default function TypewriterText({ text, speed = 16, isActive: propIsActive }) {
   const [displayed, setDisplayed] = useState('');
   const [started, setStarted] = useState(false);
   const [done, setDone] = useState(false);
   const ref = useRef(null);
 
+  // If a prop is explicitly passed (e.g., from Reader.jsx), use it directly.
   useEffect(() => {
+    if (propIsActive !== undefined) {
+      if (propIsActive) {
+        setStarted(true);
+      } else {
+        setStarted(false);
+        setDone(false);
+        setDisplayed('');
+      }
+    }
+  }, [propIsActive]);
+
+  useEffect(() => {
+    // If we're controlled by a prop, skip the DOM observer
+    if (propIsActive !== undefined) return;
+
     const el = ref.current;
     if (!el) return;
 
@@ -20,18 +36,18 @@ export default function TypewriterText({ text, speed = 16 }) {
       return;
     }
 
-    // Check initial opacity
-    if (parseFloat(chapterEl.style.opacity || 0) > 0.4) {
+    // Check initial state
+    if (chapterEl.dataset.active === 'true') {
       setStarted(true);
     }
 
-    // Watch for opacity changes set by ScrollScene
+    // Watch for data-active changes set by ScrollScene
     const observer = new MutationObserver(() => {
-      const opacity = parseFloat(chapterEl.style.opacity || 0);
-      if (opacity > 0.4) {
+      const isActive = chapterEl.dataset.active === 'true';
+      if (isActive) {
         setStarted(true);
-      } else if (opacity < 0.1) {
-        // Reset when scrolled out of view so it replays
+      } else {
+        // Reset when scrolled completely out of bounds
         setStarted(false);
         setDone(false);
         setDisplayed('');
@@ -40,11 +56,11 @@ export default function TypewriterText({ text, speed = 16 }) {
 
     observer.observe(chapterEl, {
       attributes: true,
-      attributeFilter: ['style']
+      attributeFilter: ['data-active']
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [propIsActive]);
 
   // Start typing when started
   useEffect(() => {

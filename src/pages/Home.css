@@ -103,12 +103,21 @@
   );
 }
 
+/* ----- Aurora Gradient Wrapper ----- */
+.content-aurora {
+  background: 
+    radial-gradient(ellipse at left 30%, rgba(242, 180, 65, 0.08), transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(242, 150, 60, 0.18), transparent 70%),
+    linear-gradient(180deg, #0e1117 0%, #0e1117 10%, #151811 40%, #1d1a10 75%, #2a2010 100%);
+  position: relative;
+  overflow: hidden;
+}
+
 /* ----- Sections after the scene ----- */
 .after-scene {
-  background: #0e1117;
+  background: transparent;
   color: var(--cream);
   perspective: 1000px;
-  overflow: hidden;
 }
 
 .section-title {

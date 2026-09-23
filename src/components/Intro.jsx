@@ -17,11 +17,25 @@ export default function Intro() {
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const skipImmediately = reducedMotion;
+  // Check if intro was already shown this session
+  const alreadySeen = (() => {
+    try {
+      return sessionStorage.getItem('intro_seen') === '1';
+    } catch {
+      return false;
+    }
+  })();
+
+  const skipImmediately = reducedMotion || alreadySeen;
 
   const endIntro = useCallback(() => {
     setDone(true);
     document.body.classList.add('intro-done');
+    try {
+      sessionStorage.setItem('intro_seen', '1');
+    } catch {
+      // sessionStorage unavailable
+    }
   }, []);
 
   useEffect(() => {
