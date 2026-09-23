@@ -1,3 +1,7 @@
+/* =========================================
+   TechStackStrip — Marquee of tech tags
+   ========================================= */
+
 .tech-strip {
   width: 100vw;
   position: relative;
@@ -6,89 +10,60 @@
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  background: transparent;
-  padding: 32px 0;
+  padding: 36px 0;
   margin-top: 40px;
-  /* Gradient masks for smooth fade in/out on the edges */
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  /* Smooth fade on edges */
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
-.tech-strip__label {
-  font-family: var(--display);
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  opacity: 0.8;
-  font-weight: 600;
-}
-
-.tech-strip__inner {
+.tech-strip__track {
   display: flex;
   width: max-content;
-  animation: techMarquee 40s linear infinite;
-}
-
-.tech-strip__item {
-  display: flex;
-  align-items: center;
   gap: 12px;
-  margin: 0 16px;
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 50px;
-  opacity: 0.8;
-  transition: opacity 0.3s, transform 0.3s, background 0.3s;
+  animation: techScroll 50s linear infinite;
 }
 
-.tech-strip__item:hover {
-  opacity: 1;
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(242, 180, 65, 0.3);
-}
-
-.tech-strip__icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
+.tech-strip__tag {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-}
-
-.tech-strip__icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.tech-strip__name {
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(243, 234, 217, 0.06);
+  border: 1px solid rgba(243, 234, 217, 0.1);
+  color: rgba(243, 234, 217, 0.8);
   font-family: var(--prose);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  color: var(--cream);
   white-space: nowrap;
+  letter-spacing: 0.01em;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
 }
 
-@keyframes techMarquee {
+.tech-strip__tag:hover {
+  color: var(--cream);
+  background: rgba(243, 234, 217, 0.1);
+  border-color: var(--gold);
+}
+
+.tech-strip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@keyframes techScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-100% / 3)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tech-strip__inner {
+  .tech-strip__track {
     animation: none;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-  }
-  
-  .tech-strip__item {
-    margin: 16px;
   }
 }

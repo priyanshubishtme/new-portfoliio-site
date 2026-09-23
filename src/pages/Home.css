@@ -91,21 +91,24 @@
   color: rgba(243, 234, 217, 0.92);
 }
 
-/* ----- Handoff gradient (scene → ember) ----- */
+/* ----- Handoff gradient (scene → dark content) ----- */
 .handoff {
   height: 34vh;
   background: linear-gradient(
     180deg,
-    #e8a63e 0%,
-    #9a5d22 26%,
-    #4a2c17 62%,
-    var(--ember) 100%
+    #8a5a28 0%,
+    #5a3518 26%,
+    #2a1a10 62%,
+    #0e1117 100%
   );
 }
 
 /* ----- Sections after the scene ----- */
 .after-scene {
-  background: var(--ember);
+  background: #0e1117;
+  color: var(--cream);
+  perspective: 1000px;
+  overflow: hidden;
 }
 
 .section-title {
@@ -681,11 +684,21 @@
 
   .what-row {
     grid-template-columns: 1fr;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
   .medal {
     width: 96px;
+  }
+
+  .journey-cols {
+    gap: 0;
+  }
+
+  .contact-headline {
+    font-size: clamp(2.4rem, 10vw, 5rem);
   }
 }

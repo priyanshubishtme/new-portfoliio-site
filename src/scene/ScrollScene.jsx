@@ -14,6 +14,7 @@
  * 7. Text scrim + chapter text
  */
 import { useRef, useEffect, useCallback, useState } from 'react';
+import SkyLayers from './SkyLayers';
 import ChapterText from './ChapterText';
 import siteData from '../content/site.json';
 import storyData from '../content/story.json';
@@ -39,8 +40,12 @@ export default function ScrollScene() {
   // Refs for all animated elements
   const sceneRef = useRef(null);
   const stageRef = useRef(null);
+  const duskRef = useRef(null);
+  const emberRef = useRef(null);
+  const dawnRef = useRef(null);
   const starsRef = useRef(null);
   const orbRef = useRef(null);
+  const sunRef = useRef(null);
   const avatarRef = useRef(null);
   const campusRef = useRef(null);
   const panRef = useRef(null);
@@ -132,8 +137,15 @@ export default function ScrollScene() {
   // Update all layers based on progress (0 to 1)
   const updateScene = useCallback(
     (p) => {
-      // We keep the scene in night mode permanently. No dusk/ember/dawn fading.
+      // Sky layers
+      if (duskRef.current) duskRef.current.style.opacity = ease(seg(p, 0.10, 0.30));
+      if (emberRef.current) emberRef.current.style.opacity = ease(seg(p, 0.30, 0.56));
+      if (dawnRef.current) dawnRef.current.style.opacity = ease(seg(p, 0.80, 1));
 
+      // Stars fade
+      if (starsRef.current) {
+        starsRef.current.style.opacity = 1 - 0.9 * ease(seg(p, 0.35, 0.88));
+      }
 
       // Hero text
       const isMobile = window.innerWidth <= 820;
@@ -150,7 +162,7 @@ export default function ScrollScene() {
         hintRef.current.style.opacity = 1 - seg(p, 0, 0.04);
       }
 
-      // Avatar
+      // Avatar parallax
       if (avatarRef.current) {
         const av =
           p < 0.3
@@ -188,6 +200,12 @@ export default function ScrollScene() {
         scrimRef.current.style.opacity = cIn * (1 - 0.55 * cOut);
       }
 
+      // Sun
+      if (sunRef.current) {
+        const sp = ease(seg(p, 0.84, 1));
+        sunRef.current.style.opacity = sp;
+        sunRef.current.style.transform = `translate3d(0,${(1 - sp) * 30}vh,0)`;
+      }
 
       // Chapters
       let activeChapter = -1;
@@ -202,8 +220,17 @@ export default function ScrollScene() {
         el.style.transform = isMobile
           ? `translateY(${ty}px)`
           : `translateY(calc(-50% + ${ty}px))`;
-        if (p >= a - 0.005 && (p < b || i === CHAPTER_WINDOWS.length - 1)) {
+          
+        const isActive = p >= a - 0.005 && (p < b || i === CHAPTER_WINDOWS.length - 1);
+        if (isActive) {
           activeChapter = i;
+        }
+        
+        if (el.dataset.active !== String(isActive)) {
+          el.dataset.active = String(isActive);
+          if (isActive) {
+            el.dispatchEvent(new CustomEvent('chapter-active', { detail: true }));
+          }
         }
       });
 
@@ -247,7 +274,7 @@ export default function ScrollScene() {
       const p = showDebug ? debugProgress : target;
 
       // Smooth interpolation
-      current = current + (p - current) * 0.085;
+      current = current + (p - current) * 0.06;
       if (Math.abs(p - current) < 0.0004) current = p;
 
       updateScene(current);
@@ -271,11 +298,19 @@ export default function ScrollScene() {
   return (
     <section id="scene" className="scroll-scene" ref={sceneRef} aria-label="My story">
       <div className="stage" ref={stageRef}>
+        {/* Sky layers */}
+        <SkyLayers refs={{ dusk: duskRef, ember: emberRef, dawn: dawnRef }} />
+
         {/* Stars */}
         <canvas className="stars-canvas" ref={starsRef} />
 
         {/* Gold orb */}
         <div className="scene-orb" ref={orbRef} />
+
+        {/* Sun */}
+        <div className="scene-sun" ref={sunRef} />
+
+
 
         {/* Avatar */}
         <div className="scene-avatar" ref={avatarRef}>
@@ -339,40 +374,6 @@ export default function ScrollScene() {
         </div>
       </div>
 
-      {/* Debug slider — remove after Phase 3 */}
-      {showDebug && (
-        <div
-          style={{
-            position: 'fixed',
-            bottom: 20,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 999,
-            background: 'rgba(0,0,0,0.8)',
-            padding: '12px 20px',
-            borderRadius: 12,
-            display: 'flex',
-            gap: 12,
-            alignItems: 'center',
-          }}
-        >
-          <span style={{ color: '#F2B441', fontSize: 14 }}>
-            {(debugProgress * 100).toFixed(0)}%
-          </span>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
-            value={debugProgress}
-            onChange={(e) => setDebugProgress(parseFloat(e.target.value))}
-            style={{ width: 300 }}
-          />
-        </div>
-      )}
-
-      {/* Debug toggle (keyboard shortcut: press D) */}
-      {/* This will be removed in Phase 4 */}
     </section>
   );
 }

@@ -8,7 +8,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import './intro.css';
 
-const BRAND = 'Dream with Priyanshu';
+const BRAND = '· Dream with Priyanshu';
 
 export default function Intro() {
   const [done, setDone] = useState(false);
@@ -31,6 +31,7 @@ export default function Intro() {
 
   const endIntro = useCallback(() => {
     setDone(true);
+    document.body.classList.add('intro-done');
     try {
       sessionStorage.setItem('intro_seen', '1');
     } catch {
@@ -44,8 +45,8 @@ export default function Intro() {
       return;
     }
 
-    // Auto-dismiss after 2.6s
-    const timer = setTimeout(endIntro, 2600);
+    // Auto-dismiss after 3.2s (enough time to read and feel the vibe)
+    const timer = setTimeout(endIntro, 3200);
     return () => clearTimeout(timer);
   }, [skipImmediately, endIntro]);
 

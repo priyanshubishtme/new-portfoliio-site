@@ -3,7 +3,6 @@
  * Phase 8: Scroll-reveal polish applied to all sections.
  */
 import Nav from '../components/Nav';
-import IsometricRoom from '../components/IsometricRoom';
 import ScrollScene from '../scene/ScrollScene';
 import Reader from '../projects/Reader';
 import Ceremony from '../wins/Ceremony';
@@ -13,7 +12,6 @@ import journeyData from '../content/journey.json';
 import { parseFrontmatter } from '../lib/frontmatter';
 import { useScrollReveal } from '../lib/useScrollReveal';
 import TechStackStrip from '../components/TechStackStrip';
-import RocketIcon from '../components/RocketIcon';
 import './Home.css';
 
 // Import blog posts
@@ -40,9 +38,6 @@ export default function Home() {
       <Nav />
 
       <main id="main-content">
-        {/* ===== ISOMETRIC ROOM HERO ===== */}
-        <IsometricRoom />
-
         {/* ===== SCROLL SCENE (night to dawn) ===== */}
         <ScrollScene />
 
@@ -71,7 +66,6 @@ export default function Home() {
           <div className="wrap">
             <h2 className="section-title reveal">Where I've been</h2>
             <div className="journey-cols">
-              <RocketIcon />
               {/* Experience */}
               <div className="timeline">
                 <h3 className="timeline__heading">Experience</h3>
@@ -133,19 +127,15 @@ export default function Home() {
               <ul className="medal-shelf">
                 {winsData.tiers.map((tier) =>
                   tier.items.map((item, i) => (
-                    <li key={`${tier.tier}-${i}`} style={{ listStyle: 'none' }}>
-                      <a
-                        href={item.link || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`medal medal--t${tier.tier}`}
-                      >
-                        <span className="medal__icon">{item.position}</span>
-                        <strong className="medal__title">{item.title}</strong>
-                        {item.subtitle && (
-                          <span className="medal__sub">{item.subtitle}</span>
-                        )}
-                      </a>
+                    <li
+                      key={`${tier.tier}-${i}`}
+                      className={`medal medal--t${tier.tier}`}
+                    >
+                      <span className="medal__icon">{item.position}</span>
+                      <strong className="medal__title">{item.title}</strong>
+                      {item.subtitle && (
+                        <span className="medal__sub">{item.subtitle}</span>
+                      )}
                     </li>
                   ))
                 )}
@@ -222,8 +212,8 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <span>Built by {siteData.name}</span>
-        <span>{siteData.brand}, {new Date().getFullYear()}</span>
+        <span>© {new Date().getFullYear()} {siteData.name}</span>
+        <span>Designed & built with intention</span>
       </footer>
     </>
   );
